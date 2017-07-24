@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About Us
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-list>
+<ion-item>
+    <ion-label>Community</ion-label>
+    <ion-select [(ngModel)]="community" (ngModelChange)="changed()">
+      <ion-option value="1">OC</ion-option>
+      <ion-option value="2">BCM</ion-option>
+      <ion-option value="3">BC</ion-option>
+      <ion-option value="4">MBC</ion-option>
+      <ion-option value="5">SCA</ion-option>
+      <ion-option value="6">SC</ion-option>
+      <ion-option value="7">ST</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+</ion-content>
