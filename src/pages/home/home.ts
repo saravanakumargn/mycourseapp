@@ -64,7 +64,9 @@ export class HomePage {
             // console.log(val);
             // console.log(typeof val);
             // console.log(typeof JSON.parse(val));
-            this.collegesList = JSON.parse(val);
+            if (val) {
+                this.collegesList = JSON.parse(val);
+            }
             this.isMainLoading = false;
         });
     }
@@ -80,6 +82,7 @@ export class HomePage {
             requestccode: currentFetchCodeParam,
             isLoading: true
         }
+        console.log(this.collegesList);
         let collegesListLength = this.collegesList.length;
         let isExisting: boolean = false;
         for (let i = 0; i < collegesListLength; i++) {
@@ -281,10 +284,10 @@ export class HomePage {
             // Success!
 
             this.ga.startTrackerWithId('UA-103091347-1')
-        .then(() => {
-          this.ga.trackView('HomePage:shareApp');
-        })
-        .catch(e => console.log('Error starting GoogleAnalytics', e));
+                .then(() => {
+                    this.ga.trackView('HomePage:shareApp');
+                })
+                .catch(e => console.log('Error starting GoogleAnalytics', e));
 
         }).catch(() => {
             // Error!

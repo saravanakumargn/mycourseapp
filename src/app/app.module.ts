@@ -8,6 +8,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,6 +22,7 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics';
 import { AppService } from './app.service';
 import { AddCollegeModal } from '../pages/home/addCollegeModal';
 import { ViewCollegeModal } from '../pages/home/viewCollegeModal';
+import { AddBranchModal } from '../pages/about/addBranchModal';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,11 @@ import { ViewCollegeModal } from '../pages/home/viewCollegeModal';
     AboutPage,
     ContactPage,
     HomePage,
+    SettingsPage,
     TabsPage,
     AddCollegeModal,
-    ViewCollegeModal
+    ViewCollegeModal,
+    AddBranchModal
   ],
   imports: [
     BrowserModule,
@@ -44,9 +48,11 @@ import { ViewCollegeModal } from '../pages/home/viewCollegeModal';
     AboutPage,
     ContactPage,
     HomePage,
+    SettingsPage,
     TabsPage,
     AddCollegeModal,
-    ViewCollegeModal
+    ViewCollegeModal,
+    AddBranchModal
   ],
   providers: [
     StatusBar,

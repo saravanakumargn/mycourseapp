@@ -1,11 +1,70 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Branches
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-right (click)="selectBranch()">
+  <ion-icon name="md-add"></ion-icon>
+</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+<!-- <ion-row *ngIf="!isMainLoading">
+    <ion-col center text-center>
+      <button ion-button icon-right (click)="selectBranch()">Select Branch</button>
+    </ion-col>
+  </ion-row> -->
+    <ion-row *ngIf="isMainLoading">
+    <ion-col center text-center>
+      <ion-spinner></ion-spinner>
+    </ion-col>
+  </ion-row>
+<ion-card *ngFor="let branch of branchesList">
+    <ion-row *ngIf="branch.isLoading">
+      <ion-col center text-center>
+        <ion-spinner></ion-spinner>
+      </ion-col>
+    </ion-row>
+    
+    <ion-card-header *ngIf="!branch.isLoading">
+      {{branch.bname}}
+    </ion-card-header>
+    <ion-card-content *ngIf="!branch.isLoading">
+      
+      <!-- <p>{{college.address}}</p> -->
+      <p>Last update: {{branch.updatedAt | date:'medium'}}</p>
+      <p>{{getTimeAgo(branch.updatedAt)}}</p>
+    </ion-card-content>
 
+    
+
+      <ion-item-group *ngFor="let college of branch.colleges">
+    <ion-item-divider color="light">{{getCName(college[0])}}</ion-item-divider>
+     <ion-row align-items-center>
+      <ion-col>
+    <p>{{getCName(college[0])}} - {{getCCode(college[0])}}</p>
+      </ion-col>
+    </ion-row>
+    <!-- <p>{{getCCode(college[0])}}</p> -->
+    <ion-item>
+      <ion-grid>
+   <ion-row>
+    <ion-col>OC: {{college[1]}}</ion-col>
+    <ion-col>BCM: {{college[2]}}</ion-col>
+    <ion-col>BC: {{college[3]}}</ion-col>
+    <ion-col>MBC: {{college[4]}}</ion-col>
+    <ion-col>SCA: {{college[5]}}</ion-col>
+    <ion-col>SC: {{college[6]}}</ion-col>
+    <ion-col>ST: {{college[7]}}</ion-col>
+  </ion-row> 
+</ion-grid>
+    </ion-item>
+  </ion-item-group>
+
+
+
+  </ion-card>  
 </ion-content>

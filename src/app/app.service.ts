@@ -26,10 +26,15 @@ getDetailedPage(searchValue:any, searchItem:string): Promise<any> {
 
   let body = new URLSearchParams();
 // body.set('cname', '1436');
-body.set('btncname', 'Find');
+
 
 if(searchItem === 'ccode') {
   body.set('cname', searchValue);
+  body.set('btncname', 'Find');
+}
+else if(searchItem === 'bname') {
+  body.set('bname', searchValue);
+  body.set('btnbname', 'Find');
 }
 else {
     body.set('cname', '0');

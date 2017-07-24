@@ -18,9 +18,9 @@ const bannerConfig: AdMobFreeBannerConfig = {
 export class ContactPage {
 
   constructor(public navCtrl: NavController,
-    private socialSharing: SocialSharing,
-    private admobFree: AdMobFree,
-    private ga: GoogleAnalytics) {
+  private socialSharing: SocialSharing,
+private admobFree: AdMobFree,
+private ga: GoogleAnalytics) {
 
     this.admobFree.banner.config(bannerConfig);
 
