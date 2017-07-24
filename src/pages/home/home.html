@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Colleges</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="shareApp()">
+        <ion-icon name="md-share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cards-bg social-cards" padding>
+  <ion-row *ngIf="isMainLoading">
+    <ion-col center text-center>
+      <ion-spinner></ion-spinner>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="!isMainLoading">
+    <ion-col center text-center>
+      <button ion-button icon-right (click)="presentPopover($event)">
+  Add College<ion-icon name="home"></ion-icon>
+</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-card *ngFor="let college of collegesList; let i=index">
+    <ion-row *ngIf="college.isLoading">
+      <ion-col center text-center>
+        <ion-spinner></ion-spinner>
+      </ion-col>
+    </ion-row>
+    <ion-card-header *ngIf="!college.isLoading">
+      {{college.cname}}
+    </ion-card-header>
+    <ion-card-content *ngIf="!college.isLoading">
+      <p>Code: {{college.ccode}}</p>
+      <p>{{college.address}}</p>
+      <p>Last update: {{college.updatedAt | date:'medium'}}</p>
+      <p>{{getTimeAgo(college.updatedAt)}}</p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start (click)="deleteView(college.ccode)" [disabled]="college.isLoading">
+          <ion-icon name='md-close'></ion-icon>
+          Delete
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear small color="secondary" icon-start (click)="refreshCollege(college.ccode)" [disabled]="college.isLoading">
+          <ion-icon name='md-refresh'></ion-icon>
+          Refresh
+        </button>
+      </ion-col>
+      <!-- <ion-col text-center>
+        <button ion-button clear small color="secondary" icon-start [disabled]="college.isLoading">
+          <ion-icon name='md-share'></ion-icon>
+        </button>
+      </ion-col> -->
+      <ion-col text-right>
+        <button ion-button clear small icon-start (click)="viewBranches(college)" [disabled]="college.isLoading">
+          <ion-icon name='md-browsers'></ion-icon>
+          View
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+</ion-content>

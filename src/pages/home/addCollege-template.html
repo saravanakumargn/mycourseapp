@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Description
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Search by college name or code"></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row *ngIf="items.length<=0">
+    <ion-col center text-center>
+      <ion-spinner></ion-spinner>
+    </ion-col>
+  </ion-row>
+  
+<ion-list inset>
+  <ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+    <h6>{{ item.cname }}</h6>
+    <p>{{ item.ccode }}</p>    
+  </ion-item>
+</ion-list>
+</ion-content>

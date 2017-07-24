@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      View
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+  <ion-row>
+    <ion-col col-12>{{viewItem.cname}} - {{viewItem.ccode}}</ion-col>
+  </ion-row>
+</ion-grid>
+  <ion-item-group *ngFor="let branch of viewItem.branches">
+    <ion-item-divider color="light">{{branch[0]}}</ion-item-divider>
+    <ion-item>
+      <ion-grid>
+  <ion-row>
+    <ion-col>OC: {{branch[1]}}</ion-col>
+    <ion-col>BCM: {{branch[2]}}</ion-col>
+    <ion-col>BC: {{branch[3]}}</ion-col>
+    <ion-col>MBC: {{branch[4]}}</ion-col>
+  </ion-row>
+  <ion-row style="border-top:1px solid #e5e5e5">
+    <ion-col>SCA: {{branch[5]}}</ion-col>
+    <ion-col>SC: {{branch[6]}}</ion-col>
+    <ion-col>ST: {{branch[7]}}</ion-col>
+  </ion-row>
+</ion-grid>
+    </ion-item>
+  </ion-item-group>
+  <ion-grid>
+  <ion-row>
+    <ion-col col-12>{{viewItem.address}}</ion-col>
+  </ion-row>
+  </ion-grid>
+<ion-row>
+    <ion-col center text-center>
+<button ion-button color="danger" (click)="deleteView(viewItem.ccode)">Delete view</button>
+    </ion-col>
+  </ion-row>
+</ion-content>
