@@ -3,44 +3,54 @@ import { ViewController } from 'ionic-angular';
 
 import { AppService } from '../../app/app.service';
 import * as path from '../../app/constants/paths';
-
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+const bannerConfig: AdMobFreeBannerConfig = {
+  id: 'ca-app-pub-2445138966914411/2912933957',
+  autoShow: true
+};
 @Component({
-    templateUrl: 'addBranch-template.html'
+  templateUrl: 'addBranch-template.html'
 })
 export class AddBranchModal {
-      searchQuery: string = '';
-  items:Array<any> = [];
-  private branches:Array<any> = [];
-  
+  searchQuery: string = '';
+  items: Array<any> = [];
+  private branches: Array<any> = [];
 
-    constructor(
-        public viewCtrl: ViewController,
-        private appService: AppService
-    ) {
+
+  constructor(
+    public viewCtrl: ViewController,
+    private appService: AppService,
+    private admobFree: AdMobFree,
+  ) {
+    // console.log(this.items);
+    this.getData();
+    this.admobFree.banner.config(bannerConfig);
+    this.admobFree.banner.prepare()
+      .then(() => {
+      })
+      .catch(e => console.log(e));
+  }
+
+  getData() {
+    this.appService
+      .getLocalDataService(path.brancheDataPath)
+      .then(data => {
+        // console.log(typeof data);
+        // console.log(data);   
+        this.branches = data.branches;
+        this.initializeItems();
+
+        // this.items = data.colleges;
         // console.log(this.items);
-        this.getData();
-    }
+      });
+  }
 
-    getData() {
-        this.appService
-            .getLocalDataService(path.brancheDataPath)
-            .then(data => {
-                // console.log(typeof data);
-                // console.log(data);   
-                this.branches = data.branches;
-                        this.initializeItems();
+  initializeItems() {
+    this.items = this.branches;
 
-                // this.items = data.colleges;
-                // console.log(this.items);
-            });
-    }
-    
-    initializeItems() {
-        this.items = this.branches;
+  }
 
-    }
-
-    getItems(ev: any) {
+  getItems(ev: any) {
     // Reset items back to all of the items
     this.initializeItems();
 
@@ -55,12 +65,12 @@ export class AddBranchModal {
     }
   }
 
-  itemSelected(item:any) {
+  itemSelected(item: any) {
     //   console.log(item)
-      this.viewCtrl.dismiss(item);
+    this.viewCtrl.dismiss(item);
   }
 
-    dismiss() {
-        this.viewCtrl.dismiss(null);
-    }
+  dismiss() {
+    this.viewCtrl.dismiss(null);
+  }
 }

@@ -3,6 +3,11 @@ import { ViewController } from 'ionic-angular';
 
 import { AppService } from '../../app/app.service';
 import * as path from '../../app/constants/paths';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+const bannerConfig: AdMobFreeBannerConfig = {
+  id: 'ca-app-pub-2445138966914411/6852178968',
+  autoShow: true
+};
 
 @Component({
     templateUrl: 'addCollege-template.html'
@@ -15,10 +20,16 @@ export class AddCollegeModal {
 
     constructor(
         public viewCtrl: ViewController,
-        private appService: AppService
+        private appService: AppService,
+        private admobFree: AdMobFree
     ) {
         // console.log(this.items);
         this.getData();
+    this.admobFree.banner.config(bannerConfig);
+    this.admobFree.banner.prepare()
+      .then(() => {
+      })
+      .catch(e => console.log(e));        
     }
 
     getData() {

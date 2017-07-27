@@ -5,9 +5,7 @@ import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 import { GoogleAnalytics } from '@ionic-native/google-analytics';
 
 const bannerConfig: AdMobFreeBannerConfig = {
-  // add your config here
-  // for the sake of this example we will just use the test config
-  isTesting: true,
+  id: 'ca-app-pub-2445138966914411/2912933957',
   autoShow: true
 };
 
@@ -18,11 +16,15 @@ const bannerConfig: AdMobFreeBannerConfig = {
 export class ContactPage {
 
   constructor(public navCtrl: NavController,
-  private socialSharing: SocialSharing,
-private admobFree: AdMobFree,
-private ga: GoogleAnalytics) {
+    private socialSharing: SocialSharing,
+    private admobFree: AdMobFree,
+    private ga: GoogleAnalytics) {
 
     this.admobFree.banner.config(bannerConfig);
+    this.admobFree.banner.prepare()
+      .then(() => {
+      })
+      .catch(e => console.log(e));
 
     this.ga.startTrackerWithId('UA-103091347-1')
       .then(() => {
@@ -32,7 +34,7 @@ private ga: GoogleAnalytics) {
 
   }
   shareApp() {
-    this.socialSharing.share('Body', 'Subject', '', 'http://www.saravanakumar.org').then(() => {
+    this.socialSharing.share('Download this app from https://goo.gl/z8QFA2', 'My Engineering - TNEA - Android App', '', 'https://play.google.com/store/apps/details?id=org.saravanakumar.myengineeringtnea').then(() => {
       // Success!
       this.ga.startTrackerWithId('UA-103091347-1')
         .then(() => {

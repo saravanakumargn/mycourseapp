@@ -11,7 +11,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 <!-- <ion-row *ngIf="!isMainLoading">
     <ion-col center text-center>
       <button ion-button icon-right (click)="selectBranch()">Select Branch</button>
@@ -22,7 +22,8 @@
       <ion-spinner></ion-spinner>
     </ion-col>
   </ion-row>
-<ion-card *ngFor="let branch of branchesList">
+<div *ngFor="let branch of branchesList">
+<ion-card>
     <ion-row *ngIf="branch.isLoading">
       <ion-col center text-center>
         <ion-spinner></ion-spinner>
@@ -38,14 +39,14 @@
       <p>Last update: {{branch.updatedAt | date:'medium'}}</p>
       <p>{{getTimeAgo(branch.updatedAt)}}</p>
     </ion-card-content>
-
+</ion-card>
     
 
       <ion-item-group *ngFor="let college of branch.colleges">
     <ion-item-divider color="light">{{getCName(college[0])}}</ion-item-divider>
      <ion-row align-items-center>
       <ion-col>
-    <p>{{getCName(college[0])}} - {{getCCode(college[0])}}</p>
+    <p style="font-size:12px;padding-left:12px;">{{getCName(college[0])}} - {{getCCode(college[0])}}</p>
       </ion-col>
     </ion-row>
     <!-- <p>{{getCCode(college[0])}}</p> -->
@@ -56,6 +57,8 @@
     <ion-col>BCM: {{college[2]}}</ion-col>
     <ion-col>BC: {{college[3]}}</ion-col>
     <ion-col>MBC: {{college[4]}}</ion-col>
+  </ion-row>
+  <ion-row style="border-top:1px solid #e5e5e5">	
     <ion-col>SCA: {{college[5]}}</ion-col>
     <ion-col>SC: {{college[6]}}</ion-col>
     <ion-col>ST: {{college[7]}}</ion-col>
@@ -66,5 +69,5 @@
 
 
 
-  </ion-card>  
+  </div>  
 </ion-content>

@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { ViewController, NavParams, AlertController } from 'ionic-angular';
 
 import * as path from '../../app/constants/paths';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+const bannerConfig: AdMobFreeBannerConfig = {
+  id: 'ca-app-pub-2445138966914411/1933882441',
+  autoShow: true
+};
 
 @Component({
     templateUrl: 'viewCollege-template.html'
@@ -13,10 +18,17 @@ private viewItem:any;
     constructor(
         public viewCtrl: ViewController,
         params: NavParams,
-        public alertCtrl: AlertController
+        public alertCtrl: AlertController,
+        private admobFree: AdMobFree
     ) {
         this.viewItem = params.get('viewItem');
-        console.log(this.viewItem);
+        // console.log(this.viewItem);
+
+            this.admobFree.banner.config(bannerConfig);
+    this.admobFree.banner.prepare()
+      .then(() => {
+      })
+      .catch(e => console.log(e));
     }
 
     deleteView(deleteItem) {

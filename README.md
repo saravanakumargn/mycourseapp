@@ -45,4 +45,19 @@ Run your app in the browser (great for initial development):
 Run on a device or simulator:
   ionic cordova run ios
   
+-----------------------------------------  
   
+Step: 1
+
+ionic cordova build android --prod --release
+
+Step: 2
+D:\my\projects\github\mycourseapp\platforms\android\build\outputs\apk (master)
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-androidapp.keystore android-release-unsigned.apk mycourseapp
+
+Step: 3
+zipalign -v 4 android-release-unsigned.apk mycourseapp.apk
+
+
+ionic cordova resources android -s  
