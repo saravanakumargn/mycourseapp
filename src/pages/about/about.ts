@@ -55,7 +55,7 @@ export class AboutPage {
 
     this.ga.startTrackerWithId('UA-103091347-1')
       .then(() => {
-        this.ga.trackView('HomePage');
+        this.ga.trackView('BranchesPage');
       })
       .catch(e => console.log('Error starting GoogleAnalytics', e));
 
@@ -160,7 +160,7 @@ export class AboutPage {
 
                     this.ga.startTrackerWithId('UA-103091347-1')
                       .then(() => {
-                        this.ga.trackView('HomePage:Add:' + currentbname);
+                        this.ga.trackView('BranchesPage:Add:' + currentbname);
                       })
                       .catch(e => console.log('Error starting GoogleAnalytics', e));
 

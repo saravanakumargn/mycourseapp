@@ -7,26 +7,53 @@
 </ion-header>
 
 <ion-content>
-
   <ion-card>
-  <ion-card-content>
-    <ion-card-title>Thanks to TNEA 2017</ion-card-title>
-    <p>This informations are downloaded from www.tnea.ac.in website for students convenience.</p>
-  </ion-card-content>
-</ion-card>
-  <ion-card>
-  <ion-card-content>
-    <ion-card-title>Share this APP</ion-card-title>
-    <p>Please share this with your friends/students.</p>
-  </ion-card-content>
-
+    <ion-card-content>
+      <ion-card-title>Share this APP</ion-card-title>
+      <p>Please share this with your friends/students.</p>
+    </ion-card-content>
     <ion-row no-padding>
       <ion-col text-right>
-        <button ion-button clear small color="secondary" icon-start (click)="shareApp()">
+        <button ion-button color="secondary" icon-start (click)="shareApp()">
           <ion-icon name='md-share'></ion-icon>Share
         </button>
       </ion-col>
     </ion-row>
-</ion-card>
-
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>Learn Javascript</ion-card-title>
+      <p>JavaScript is a programming language that allows you to implement complex things on web pages.</p>
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col text-right>
+        <a detail-none href="https://play.google.com/store/apps/details?id=org.saravanakumar.ecmascript">
+          <button ion-button icon-start>
+          <ion-icon name='md-download'></ion-icon>Download
+        </button>
+</a>
+      </ion-col>
+    </ion-row>
+  </ion-card>  
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>Tamilnadu Samacheer Textbooks</ion-card-title>
+      <p>Now Tamilnadu samacheer school books are available from Std1 to Std10.</p>
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col text-right>
+        <a detail-none href="https://play.google.com/store/apps/details?id=org.saravanakumar.mytextbooks">
+          <button ion-button icon-start>
+          <ion-icon name='md-download'></ion-icon>Download
+        </button>
+</a>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>Thanks to TNEA 2017</ion-card-title>
+      <p>This informations are downloaded from www.tnea.ac.in website for students convenience.</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams, AlertController } from 'ionic-angular';
 
+import * as moment from "moment";
 import * as path from '../../app/constants/paths';
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 const bannerConfig: AdMobFreeBannerConfig = {
@@ -54,7 +55,11 @@ private viewItem:any;
     confirm.present();
 
     }
-
+  
+  getTimeAgo(dateTime) {
+    // console.log(dateTime)
+    return moment(dateTime).fromNow();
+  }
 
     dismiss() {
         this.viewCtrl.dismiss(null);

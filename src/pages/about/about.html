@@ -36,14 +36,18 @@
     <ion-card-content *ngIf="!branch.isLoading">
       
       <!-- <p>{{college.address}}</p> -->
-      <p>Last update: {{branch.updatedAt | date:'medium'}}</p>
-      <p>{{getTimeAgo(branch.updatedAt)}}</p>
+      <p style="font-size:12px;">Last update: {{branch.updatedAt | date:'medium'}}</p>
+      <p style="font-size:12px;">{{getTimeAgo(branch.updatedAt)}}</p>
     </ion-card-content>
 </ion-card>
     
 
       <ion-item-group *ngFor="let college of branch.colleges">
-    <ion-item-divider color="light">{{getCName(college[0])}}</ion-item-divider>
+        <!-- <div class="coll-divider"></div> -->
+     <ion-item-divider color="light"></ion-item-divider> 
+    <!-- <ion-item-divider color="light">
+       {{getCName(college[0])}} 
+    </ion-item-divider> -->
      <ion-row align-items-center>
       <ion-col>
     <p style="font-size:12px;padding-left:12px;">{{getCName(college[0])}} - {{getCCode(college[0])}}</p>
@@ -53,15 +57,15 @@
     <ion-item>
       <ion-grid>
    <ion-row>
-    <ion-col>OC: {{college[1]}}</ion-col>
-    <ion-col>BCM: {{college[2]}}</ion-col>
-    <ion-col>BC: {{college[3]}}</ion-col>
-    <ion-col>MBC: {{college[4]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': college[1] == 0 }">OC: {{college[1]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': college[2] == 0 }">BCM: {{college[2]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': college[3] == 0 }">BC: {{college[3]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': college[4] == 0 }">MBC: {{college[4]}}</ion-col>
   </ion-row>
   <ion-row style="border-top:1px solid #e5e5e5">	
-    <ion-col>SCA: {{college[5]}}</ion-col>
-    <ion-col>SC: {{college[6]}}</ion-col>
-    <ion-col>ST: {{college[7]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': college[5] == 0 }">SCA: {{college[5]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': college[6] == 0 }">SC: {{college[6]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': college[7] == 0 }">ST: {{college[7]}}</ion-col>
   </ion-row> 
 </ion-grid>
     </ion-item>

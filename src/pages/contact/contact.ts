@@ -46,4 +46,8 @@ export class ContactPage {
       // Error!
     });
   }
+
+  downloadBookApp() {
+    
+  }
 }

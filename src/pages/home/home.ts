@@ -83,7 +83,14 @@ export class HomePage {
     });
   }
 
-  refreshCollege(currentFetchCodeParam) {
+  refreshCollege(currentFetchCodeParam, refreshCName) {
+
+                    this.ga.startTrackerWithId('UA-103091347-1')
+                      .then(() => {
+                        this.ga.trackView('HomePage:Refresh:' + refreshCName);
+                      })
+                      .catch(e => console.log('Error starting GoogleAnalytics', e));
+    
     this.getDetailedPage(currentFetchCodeParam);
   }
 
@@ -287,7 +294,7 @@ export class HomePage {
   }
 
   getTimeAgo(dateTime) {
-    console.log(dateTime)
+    // console.log(dateTime)
     return moment(dateTime).fromNow();
   }
 

@@ -39,7 +39,7 @@
         </button>
       </ion-col>
       <ion-col>
-        <button ion-button clear small color="secondary" icon-start (click)="refreshCollege(college.ccode)" [disabled]="college.isLoading">
+        <button ion-button clear small color="secondary" icon-start (click)="refreshCollege(college.ccode, college.cname)" [disabled]="college.isLoading">
           <ion-icon name='md-refresh'></ion-icon>
           Refresh
         </button>

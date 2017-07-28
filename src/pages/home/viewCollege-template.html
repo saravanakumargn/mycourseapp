@@ -15,6 +15,7 @@
   <ion-grid>
   <ion-row>
     <ion-col col-12>{{viewItem.cname}} - {{viewItem.ccode}}</ion-col>
+    <ion-col col-12>Last update: {{viewItem.updatedAt | date:'medium'}} ({{getTimeAgo(viewItem.updatedAt)}})</ion-col>
   </ion-row>
 </ion-grid>
   <ion-item-group *ngFor="let branch of viewItem.branches">
@@ -22,15 +23,15 @@
     <ion-item>
       <ion-grid>
   <ion-row>
-    <ion-col>OC: {{branch[1]}}</ion-col>
-    <ion-col>BCM: {{branch[2]}}</ion-col>
-    <ion-col>BC: {{branch[3]}}</ion-col>
-    <ion-col>MBC: {{branch[4]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': branch[1] == 0 }">OC: {{branch[1]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': branch[2] == 0 }">BCM: {{branch[2]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': branch[3] == 0 }">BC: {{branch[3]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': branch[4] == 0 }">MBC: {{branch[4]}}</ion-col>
   </ion-row>
   <ion-row style="border-top:1px solid #e5e5e5">
-    <ion-col>SCA: {{branch[5]}}</ion-col>
-    <ion-col>SC: {{branch[6]}}</ion-col>
-    <ion-col>ST: {{branch[7]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': branch[5] == 0 }">SCA: {{branch[5]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': branch[6] == 0 }">SC: {{branch[6]}}</ion-col>
+    <ion-col class="com-label" [ngClass]="{'com-label-full': branch[7] == 0 }">ST: {{branch[7]}}</ion-col>
   </ion-row>
 </ion-grid>
     </ion-item>
